@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System.Net.Http.Json;
 namespace UMU
 {
@@ -69,8 +70,12 @@ namespace UMU
                     var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/cart/change", content);
                     if (response.IsSuccessStatusCode)
                     {
-                        Number.Text = "";
-                        Status.Content = "Статус: Отправлено";
+                         var builder = new ToastContentBuilder()
+                        .AddArgument("meetingId", 9813)
+                        .AddText("Уведомление", hintMaxLines: 1)
+                        .AddText("Успешно отправлено!")
+                        ;
+                        builder.Show();
                         prev_window.get_all_cartidge();
                     }
                 }
