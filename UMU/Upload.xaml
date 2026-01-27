@@ -1,0 +1,36 @@
+﻿<Window x:Class="UMU.Upload"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UMU"
+        mc:Ignorable="d"
+        Title="Выгрузка картриджей" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="Table_Uploads" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="800" Height="280" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Width="130" Binding="{Binding Path=Серия}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Дата отправки" Width="150" Binding="{Binding Path=Дата}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Модель" Width="150" Binding="{Binding Path=Модель}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Width="362" Binding="{Binding Path=Адрес}">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <Label Content="Выгружаемые картриджи" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="24"/>
+        <Button Content="Загрузить" HorizontalAlignment="Left" Margin="72,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Очистить базу" HorizontalAlignment="Left" Margin="620,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_2" FontWeight="Bold"/>
+        <Button Content="ВОРД" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_1" FontWeight="Bold"/>
+    </Grid>
+</Window>

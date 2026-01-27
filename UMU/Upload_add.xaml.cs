@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,48 +14,61 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Toolkit.Uwp.Notifications;
-using System.Net.Http.Json;
+using Windows.Devices.Usb;
+
+
 namespace UMU
 {
     /// <summary>
-    /// Логика взаимодействия для Plus.xaml
+    /// Логика взаимодействия для Upload_add.xaml
     /// </summary>
-    public partial class Plus : Window
+    public partial class Upload_add : Window
     {
-        public int value_pub;
-        public MainWindow prev_window;
+        public int value_pub = -1;
+        public bool serial = false;
         public class Post
         {
             public int id { get; set; }
             public int value { get; set; }
+            public string adres { get; set; }
+            public string serial { get; set; }
         }
-        public bool serial;
-        public Plus(int value, MainWindow mainWindow)
+        public Upload_add()
         {
-            prev_window = mainWindow;
             InitializeComponent();
-            if (value == 1) title.Content = "ПРИЁМ";
-            else title.Content = "ОТПРАВКА";
-            value_pub = value;
             Number.Focus();
         }
-
         private async void Window_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.Key == Key.Enter)
                 {
-                    await Insert();
+                    if (value_pub == -1)
+                    {
+                        if (serial != true)
+                        {
+                            Message.Text = "Ожидаю серийный номер";
+                            SerialBox.Focus();
+                            SerialBox.Text = "";
+                            serial = true;
+                        }
+                        else
+                        {
+                            serial = false;
+                            await Insert();
+                        }
+                    }
+                    else await Insert();
+
                 }
                 else if (e.Key == Key.Escape) this.Close();
             }
             catch (Exception error)
             {
-                MessageBox.Show("Произошла ошибка!"+error.ToString());
+                MessageBox.Show("Произошла ошибка!" + error.ToString());
             }
-            
+
         }
 
         public async Task Insert()
@@ -64,20 +79,21 @@ namespace UMU
                 {
                     Post post = new Post()
                     {
-                        id = Convert.ToInt32(Number.Text.Substring(Number.Text.Length-2,2)),
+                        id = Convert.ToInt32(Number.Text.Substring(Number.Text.Length - 2, 2)),
                         value = value_pub,
+                        serial = SerialBox.Text,
+                        adres = Properties.Settings.Default.adres
                     };
                     JsonContent content = JsonContent.Create(post);
-                    var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/cart/change", content);
+                    var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/upload/add", content);
                     if (response.IsSuccessStatusCode)
                     {
-                         var builder = new ToastContentBuilder()
-                        .AddArgument("meetingId", 9813)
-                        .AddText("Уведомление", hintMaxLines: 1)
-                        .AddText("Изменения приняты!")
-                        ;
+                        var builder = new ToastContentBuilder()
+                       .AddArgument("meetingId", 9813)
+                       .AddText("Уведомление", hintMaxLines: 1)
+                       .AddText("Изменения приняты!")
+                       ;
                         builder.Show();
-                        prev_window.get_all_cartidge();
                     }
                     Number.Focus();
                 }
@@ -96,6 +112,7 @@ namespace UMU
         private void Number_GotFocus(object sender, RoutedEventArgs e)
         {
             Number.Text = "";
+            Message.Text = "Ожидаю код";
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMU"
         mc:Ignorable="d"
-        Title="set_server" Height="216" Width="559">
+        Title="Настройки" Height="216" Width="559">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,8 +13,13 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox x:Name="ip_box" HorizontalAlignment="Center" Margin="0,0,0,88" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="300" Height="41"/>
-        <Button Content="Подключиться" HorizontalAlignment="Center" Margin="0,136,0,0" VerticalAlignment="Top" Height="30" Width="145" Click="Button_Click"/>
-
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,112,29,0" Background="White" HorizontalAlignment="Right" Width="498" Height="52" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,36,29,0" Background="White" HorizontalAlignment="Right" Width="498" Height="51" VerticalAlignment="Top"/>
+        <TextBox x:Name="ip_box" HorizontalAlignment="Right" Margin="0,46,228,0" TextWrapping="Wrap" Width="198" Height="26" VerticalAlignment="Top"/>
+        <Button Content="Подключиться" HorizontalAlignment="Left" Margin="361,46,0,0" VerticalAlignment="Top" Height="26" Width="143" Click="Button_Click"/>
+        <TextBox x:Name="adres_box" HorizontalAlignment="Right" Margin="0,125,228,0" TextWrapping="Wrap" Width="198" Height="26" VerticalAlignment="Top"/>
+        <Button x:Name="Сохранить" Content="Сохранить" HorizontalAlignment="Left" Margin="361,125,0,0" VerticalAlignment="Top" Height="26" Width="143" Click="Сохранить_Click" />
+        <Label Content="Сервер" HorizontalAlignment="Left" Margin="58,41,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Height="26" Width="57"/>
+        <Label Content="Адрес" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Margin="58,120,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" Height="26" Width="57"/>
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMU"
         mc:Ignorable="d"
-        Title="MainWindow" Height="629" Width="926" KeyDown="Window_KeyDown" ResizeMode="NoResize">
+        Title="Система учета картриджей" Height="629" Width="926" KeyDown="Window_KeyDown" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -45,17 +45,17 @@
         <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="0,30,0,0" Height="68" VerticalAlignment="Top" HorizontalAlignment="Center" Width="416" Background="#FFDADADA">
             <Label Content="Система Учёта Картриджей (СУК)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="396" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold"/>
         </Border>
-        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,477,0,0" Height="109" VerticalAlignment="Top" HorizontalAlignment="Left" Width="211">
+        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,296,0,0" Height="109" VerticalAlignment="Top" HorizontalAlignment="Left" Width="211">
             <Border.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Button Content="Уход" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
+            <Button Content="Уход (Врачам)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
         </Border>
         <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="10,13,0,0" HorizontalAlignment="Left" Width="92" Height="37" VerticalAlignment="Top">
-            <Button Content="Сервер" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="92" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_2"/>
+            <Button Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="92" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_2"/>
         </Border>
         <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="496,531,0,0" HorizontalAlignment="Left" Width="108" Height="55" VerticalAlignment="Top">
             <Border.BorderBrush>
@@ -66,14 +66,23 @@
             </Border.BorderBrush>
             <Button Content="Обновить" HorizontalAlignment="Center" VerticalAlignment="Center" Height="49" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_3"/>
         </Border>
-        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="496,468,0,0" HorizontalAlignment="Left" Width="108" Height="55" VerticalAlignment="Top">
+        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="496,444,0,0" HorizontalAlignment="Left" Width="108" Height="55" VerticalAlignment="Top">
             <Border.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Button Content="Отчет" HorizontalAlignment="Center" VerticalAlignment="Center" Height="49" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_4"/>
+            <Button Content="Выгрузка" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="49" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_4" Margin="0,0,0,-1"/>
+        </Border>
+        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,478,0,0" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="211">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Button Content="Уход (В коробку)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_5"/>
         </Border>
 
     </Grid>

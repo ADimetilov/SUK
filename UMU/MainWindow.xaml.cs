@@ -74,11 +74,9 @@ namespace UMU
             if (e.Key == Key.Escape)
             {
                 cancel = true;
-                MessageBox.Show("Esc");
             }
             if (e.Key == Key.Enter)
             {
-                MessageBox.Show("Enter");
             }
         }
 
@@ -103,8 +101,14 @@ namespace UMU
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-
+            Upload upload_window = new Upload();
+            upload_window.ShowDialog();
         }
 
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Upload_add upload_add_winwow = new Upload_add();
+            upload_add_winwow.ShowDialog();
+        }
     }
 }

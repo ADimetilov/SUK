@@ -34,5 +34,17 @@ namespace UMU.Properties {
                 this["ip"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string adres {
+            get {
+                return ((string)(this["adres"]));
+            }
+            set {
+                this["adres"] = value;
+            }
+        }
     }
 }

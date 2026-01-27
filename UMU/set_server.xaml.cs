@@ -24,6 +24,8 @@ namespace UMU
         public set_server()
         {
             InitializeComponent();
+            ip_box.Text = Properties.Settings.Default.ip;
+            adres_box.Text = Properties.Settings.Default.adres;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -38,7 +40,7 @@ namespace UMU
                         MessageBox.Show("Соединение установлено");
                         Properties.Settings.Default.ip = ip_box.Text;
                         Properties.Settings.Default.Save();
-                        this.Close();
+                        MessageBox.Show("Успешно сохранено");
                     }
                     else MessageBox.Show("Соединение не установлено");
                 }
@@ -48,6 +50,12 @@ namespace UMU
 
                 
             }
+        }
+
+        private void Сохранить_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.adres = adres_box.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }
