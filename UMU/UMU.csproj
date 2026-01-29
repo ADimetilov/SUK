@@ -59,6 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Analitics.xaml.cs">
+      <DependentUpon>Analitics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cartridge_window.xaml.cs">
+      <DependentUpon>Cartridge_window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateDocuments.cs" />
     <Compile Include="set_server.xaml.cs">
       <DependentUpon>set_server.xaml</DependentUpon>
@@ -69,6 +75,14 @@
     <Compile Include="Upload_add.xaml.cs">
       <DependentUpon>Upload_add.xaml</DependentUpon>
     </Compile>
+    <Page Include="Analitics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cartridge_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

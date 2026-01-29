@@ -56,7 +56,7 @@ namespace UMU
                         if (cell.RowIndex == 1)
                         {
                             cell.Range.Font.Name = "Times new Roman";
-                            cell.Range.Font.Size = 14;
+                            cell.Range.Font.Size = 12;
                             cell.Range.Text = names[cell.Column.Index-1];
                         }
                     }

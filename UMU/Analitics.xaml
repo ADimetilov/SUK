@@ -1,0 +1,29 @@
+﻿<Window x:Class="UMU.Analitics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UMU"
+        mc:Ignorable="d"
+        Title="Analitics" MinHeight="400" MinWidth="700" MaxHeight="400" MaxWidth="700" FontFamily="Times New Roman" FontSize="14">
+    <Grid>
+        <DatePicker x:Name="DateEndPicker" HorizontalAlignment="Left" Margin="31,211,0,0" VerticalAlignment="Top" Width="138"/>
+        <DatePicker x:Name="DateStartPicker" HorizontalAlignment="Left" Margin="31,127,0,0" VerticalAlignment="Top" Height="26" Width="138"/>
+        <ComboBox x:Name="ModelComboBox" DisplayMemberPath="name" SelectedItem="{Binding Path=Cartridge_class}" SelectedValue="{Binding Path=Cartridge_class.id}" SelectedValuePath="id"  HorizontalAlignment="Left" Margin="31,33,0,0" VerticalAlignment="Top" Width="138" Height="24">
+
+        </ComboBox>
+        <Button x:Name="GiveAnalitics" Content="Получить статистику" HorizontalAlignment="Left" Margin="31,309,0,0" VerticalAlignment="Top" Height="30" Width="138" Click="GiveAnalitics_Click"/>
+        <Label Content="Конечная дата" HorizontalAlignment="Left" Margin="31,174,0,0" VerticalAlignment="Top" Height="28" Width="106"/>
+        <Label Content="Начальная дата" HorizontalAlignment="Left" Margin="31,91,0,0" VerticalAlignment="Top" Width="106" Height="31"/>
+        <Label Content="Модель картриджа" HorizontalAlignment="Left" Margin="31,7,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="IsAllModelChecker" Content="Все картриджи" HorizontalAlignment="Left" Margin="31,62,0,0" VerticalAlignment="Top"/>
+        <Rectangle Height="344" Margin="205,0,0,0" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Width="476" RadiusX="72.02" RadiusY="72.02"/>
+        <Label Content="Пришло:" HorizontalAlignment="Left" Margin="262,52,0,0" VerticalAlignment="Top" Height="25" Width="69"/>
+        <Label Content="Отдали:" HorizontalAlignment="Left" Margin="262,96,0,0" VerticalAlignment="Top"/>
+        <Label Content="Остаток" HorizontalAlignment="Left" Margin="262,140,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="get_count" Content="" HorizontalAlignment="Left" Margin="331,52,0,0" VerticalAlignment="Top" Foreground="#FF2DFB26"/>
+        <Label x:Name="post_count" Content="" HorizontalAlignment="Left" Margin="331,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,0.5" Foreground="#FFFB1B1B"/>
+        <Label x:Name="count" Content="" HorizontalAlignment="Left" Margin="331,140,0,0" VerticalAlignment="Top" Foreground="#FF085382"/>
+
+    </Grid>
+</Window>

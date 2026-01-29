@@ -26,16 +26,19 @@ namespace UMU
     {
         public int value_pub = -1;
         public bool serial = false;
+        public int is_dram = 0;
         public class Post
         {
             public int id { get; set; }
             public int value { get; set; }
             public string adres { get; set; }
             public string serial { get; set; }
+            public int dram { get; set; }
         }
-        public Upload_add()
+        public Upload_add(MainWindow window)
         {
             InitializeComponent();
+            if (window.DramButton.IsChecked == true) is_dram = 1;
             Number.Focus();
         }
         private async void Window_KeyDown(object sender, KeyEventArgs e)
@@ -82,7 +85,8 @@ namespace UMU
                         id = Convert.ToInt32(Number.Text.Substring(Number.Text.Length - 2, 2)),
                         value = value_pub,
                         serial = SerialBox.Text,
-                        adres = Properties.Settings.Default.adres
+                        adres = Properties.Settings.Default.adres,
+                        dram = is_dram
                     };
                     JsonContent content = JsonContent.Create(post);
                     var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/upload/add", content);

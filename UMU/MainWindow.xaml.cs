@@ -22,7 +22,7 @@ using System.Threading;
 namespace UMU
 {
     [DataContract]
-    public class Cartridge
+    public class Cartridge_class
     {
         [DataMember(Name="id")]
         public int id { get; set; }
@@ -51,9 +51,9 @@ namespace UMU
                     byte[] JsonBytes = Encoding.UTF8.GetBytes(reply);
                     MemoryStream stream = new MemoryStream(JsonBytes);
                     {
-                        DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<Cartridge>));
-                        List<Cartridge> cartridges = (List<Cartridge>)jsonSerializer.ReadObject(stream);
-                        cart_list.ItemsSource = cartridges;
+                        DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<Cartridge_class>));
+                        List<Cartridge_class> Cartridge_classs = (List<Cartridge_class>)jsonSerializer.ReadObject(stream);
+                        cart_list.ItemsSource = Cartridge_classs;
                     }
                 }
             }
@@ -107,8 +107,20 @@ namespace UMU
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            Upload_add upload_add_winwow = new Upload_add();
+            Upload_add upload_add_winwow = new Upload_add(this);
             upload_add_winwow.ShowDialog();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Cartridge cartridge_window = new Cartridge();
+            cartridge_window.ShowDialog();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            Analitics analitics = new Analitics();
+            analitics.ShowDialog();
         }
     }
 }

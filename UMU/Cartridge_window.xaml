@@ -1,0 +1,26 @@
+﻿<Window x:Class="UMU.Cartridge"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UMU"
+        mc:Ignorable="d"
+        Title="Картриджи" Height="578" Width="344" FontFamily="Times New Roman" FontSize="14">
+    <Grid Margin="0,0,0,-6">
+        <Label Content="Картриджи" HorizontalAlignment="Left" Margin="39,23,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="24"/>
+        <Button x:Name="Delete_button" Content="Удалить" HorizontalAlignment="Left" Margin="40,429,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Delete_button_Click"/>
+        <ListBox x:Name="cart_list" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="40,61,0,0" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="#FFDADADA" HorizontalAlignment="Left" Width="261" Height="348" VerticalAlignment="Top" SelectionChanged="cart_list_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="251">
+                        <Label Content="{Binding id}" HorizontalAlignment="Left" Width="50" Height="26" VerticalAlignment="Center" Padding="5"/>
+                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Width="201" Height="26" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="Add_button" Content="Добавить" HorizontalAlignment="Left" Margin="231,429,0,0" VerticalAlignment="Top" Height="26" Width="70" Click="Add_button_Click"/>
+        <TextBox x:Name="NameAdd_Box" HorizontalAlignment="Left" Margin="40,477,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="261" Height="26" FontSize="16" FontFamily="Times New Roman"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="122,429,0,0" VerticalAlignment="Top" Height="26" Width="96" Click="Button_Click"/>
+    </Grid>
+</Window>

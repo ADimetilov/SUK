@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMU"
         mc:Ignorable="d"
-        Title="Выгрузка картриджей" Height="450" Width="800">
+        Title="Выгрузка картриджей" Height="450" Width="800" KeyDown="Window_KeyDown">
     <Grid>
-        <DataGrid x:Name="Table_Uploads" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="800" Height="280" VerticalAlignment="Top">
+        <DataGrid x:Name="Table_Uploads" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="800" Height="280" VerticalAlignment="Top" KeyDown="Table_Uploads_KeyDown" PreviewKeyDown="Table_Uploads_PreviewKeyDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Width="130" Binding="{Binding Path=Серия}">
                 </DataGridTextColumn>
@@ -29,8 +29,10 @@
             </DataGrid.RenderTransform>
         </DataGrid>
         <Label Content="Выгружаемые картриджи" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="24"/>
-        <Button Content="Загрузить" HorizontalAlignment="Left" Margin="72,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click" FontWeight="Bold"/>
-        <Button Content="Очистить базу" HorizontalAlignment="Left" Margin="620,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_2" FontWeight="Bold"/>
-        <Button Content="ВОРД" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_1" FontWeight="Bold"/>
+        <Button Content="Загрузить" HorizontalAlignment="Left" Margin="72,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Очистить базу" HorizontalAlignment="Left" Margin="619,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_2" FontWeight="Bold"/>
+        <Button HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_1" FontWeight="Bold" Content="В Word"/>
+        <Label Content="Всего:" HorizontalAlignment="Left" Margin="0,326,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
+        <Label x:Name="Cost" Content="" HorizontalAlignment="Left" Margin="59,328,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
     </Grid>
 </Window>

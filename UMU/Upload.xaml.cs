@@ -22,6 +22,8 @@ namespace UMU
     [DataContract]
     public class cartridge_log
     {
+        [DataMember(Name ="id")]
+        public int id { get; set; }
         [DataMember(Name ="model")]
         public string Модель { get; set; }
         [DataMember(Name ="serial")]
@@ -36,9 +38,11 @@ namespace UMU
     /// </summary>
     public partial class Upload : Window
     {
+        
         public Upload()
         {
             InitializeComponent();
+            
         }
         public List<cartridge_log> cartridges;
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -54,6 +58,7 @@ namespace UMU
                         DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<cartridge_log>));
                         cartridges = (List<cartridge_log>)jsonSerializer.ReadObject(stream);
                         Table_Uploads.ItemsSource = cartridges;
+                        Cost.Content = cartridges.Count;
                     }
                 }
             }
@@ -86,6 +91,7 @@ namespace UMU
                            .AddText("База очищена!")
                            ;
                             builder.Show();
+                            Button_Click(sender, e);
                         }
                     }
                 }
@@ -94,6 +100,49 @@ namespace UMU
             {
                 MessageBox.Show(error.ToString());
 
+            }
+        }
+
+        private async void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private async void Table_Uploads_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private async void Table_Uploads_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (Table_Uploads.SelectedItem != null)
+                {
+                    cartridge_log cartridge_ = (cartridge_log)Table_Uploads.SelectedItem;
+                    try
+                    {
+                        using (var client = new HttpClient())
+                        {
+                            var response = await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/upload/delid?id={cartridge_.id}");
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var builder = new ToastContentBuilder()
+                               .AddArgument("meetingId", 9813)
+                               .AddText("Уведомление", hintMaxLines: 1)
+                               .AddText("Запись удалена!")
+                               ;
+                                builder.Show();
+                            }
+                            Button_Click(sender, e);
+                        }
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.ToString());
+
+                    }
+                }
             }
         }
     }
