@@ -145,5 +145,13 @@ namespace UMU
                 }
             }
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            CreateExcel excel = new CreateExcel();
+            excel.SetTitle();
+            excel.SetContent(cartridges);
+            excel.SaveTable();
+        }
     }
 }

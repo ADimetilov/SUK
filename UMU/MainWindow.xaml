@@ -86,7 +86,7 @@
             </Border.RenderTransform>
             <Button Content="Картриджи" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_6"/>
         </Border>
-        <RadioButton x:Name="DramButton" Content="Драм." HorizontalAlignment="Left" Margin="859,446,0,0" VerticalAlignment="Top" Foreground="#FFFFFEFE" IsChecked="False"/>
+        <RadioButton x:Name="DramButton" Content="Драм." HorizontalAlignment="Left" Margin="859,446,0,0" VerticalAlignment="Top" Foreground="#FFFFFEFE" IsChecked="False" IsEnabled="False"/>
         <RadioButton x:Name="CartRadio" Content="Карт." HorizontalAlignment="Left" Margin="794,446,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="True"/>
 
 

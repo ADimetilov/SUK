@@ -5,17 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMU"
         mc:Ignorable="d"
-        Title="Работа с картриджами" Height="264" Width="409" KeyDown="Window_KeyDown" GotFocus="Window_GotFocus" ResizeMode="NoResize">
-    <Grid Height="254" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="409" Margin="0,0,0,-6">
+        Title="Работа с картриджами" Height="393" Width="582" KeyDown="Window_KeyDown" GotFocus="Window_GotFocus" ResizeMode="NoResize">
+    <Grid Height="383" VerticalAlignment="Top" HorizontalAlignment="Center" Width="582">
         <TextBox x:Name="Number" HorizontalAlignment="Left" Margin="31,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="48" Visibility="Visible" GotFocus="Number_GotFocus"/>
         <TextBox x:Name="SerialBox" Visibility="Visible" Margin="261,50,31,176"/>
         <Grid Background="White">
-
             <TextBlock x:Name="Message" HorizontalAlignment="Center" Margin="0,81,0,0" TextWrapping="Wrap" Text="Ожидаю код" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold"/>
+            <Label x:Name="Status" Content="" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" Width="294" />
+            <Label Content="Для выхода нажмите: 'ESC'" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Height="40" Width="294" FontFamily="Times New Roman" FontSize="24" HorizontalContentAlignment="Center"/>
+            <Label x:Name="title" Content="Отправка" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Height="49" Width="132" FontFamily="Times New Roman" FontSize="24" HorizontalContentAlignment="Center"/>
+            <ListBox x:Name="NumberBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,210,0,0" FontFamily="Times New Roman" FontSize="18">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="Клавиша:"></Run>
+                            <Run Text="{Binding Path=number}"></Run>
+                            <Run Text="|"></Run>
+                            <Run Text="Модель"></Run>
+                            <Run Text="{Binding Path=model}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="Дополнительные клавиши:" HorizontalAlignment="Center" Margin="0,174,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
         </Grid>
-
-        <Label x:Name="Status" Content="" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" Width="294" />
-        <Label Content="Для выхода нажмите: 'ESC'" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Height="40" Width="294" FontFamily="Times New Roman" FontSize="24" HorizontalContentAlignment="Center"/>
-        <Label x:Name="title" Content="Отправка" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Height="49" Width="132" FontFamily="Times New Roman" FontSize="24" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>
