@@ -30,7 +30,6 @@ namespace UMU
     {
         public int value_pub = -1;
         public bool serial = false;
-        public int is_dram = 0;
         public bool is_number = false;
         private int count_model;
         private string model_name;
@@ -59,7 +58,6 @@ namespace UMU
         public Upload_add(MainWindow window)
         {
             InitializeComponent();
-            if (window.DramButton.IsChecked == true) is_dram = 1;
             get_all_cartidge();
             Number.Focus();
         }
@@ -142,31 +140,37 @@ namespace UMU
                                 int id = Convert.ToInt32(Number.Text.Substring(Number.Text.Length - 2, 2));
                                 foreach (cartridge_model model in list)
                                 {
-                                    if (model.cart_id == id && model.model_name.Count > 1)
+                                    if (model.cart_id == id)
                                     {
-                                        int count = 1;
-                                        is_number = true;
-                                        currentmodel = model;
-                                        count_model = model.model_name.Count;
-                                        foreach (string name in model.model_name)
+                                        if (model.model_name.Count > 1)
                                         {
-                                            template_item item = new template_item();
-                                            item.number = count.ToString();
-                                            item.model = name;
-                                            NumberBox.Items.Add(item);
-                                            count += 1;
+                                            int count = 1;
+                                            is_number = true;
+                                            currentmodel = model;
+                                            count_model = model.model_name.Count;
+                                            foreach (string name in model.model_name)
+                                            {
+                                                template_item item = new template_item();
+                                                item.number = count.ToString();
+                                                item.model = name;
+                                                NumberBox.Items.Add(item);
+                                                count += 1;
+                                            }
+                                            Message.Text = "Ожидаю дополнительную клавишу";
+                                            NumberBox.Visibility = Visibility.Visible;
+                                            Dops_Label.Visibility = Visibility.Visible;
+                                            return;
                                         }
-                                        Message.Text = "Ожидаю дополнительную клавишу";
-                                        return;
-                                    }
-                                    else if (model.cart_id == id && model.model_name.Count == 1)
-                                    {
-                                        model_name = model.model_name[0];
-                                    }
-                                    else if (model.cart_id == id && model.model_name.Count < 1)
-                                    {
-                                        MessageBox.Show("Введен не верный код модели");
-                                        Number.Focus();
+                                        else if (model.model_name.Count == 1)
+                                        {
+                                            model_name = model.model_name[0];
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Для штрих-кода не настроены модели");
+                                            Number.Focus();
+                                            return;
+                                        }
                                     }
                                 }
                                 await Insert();
@@ -194,7 +198,7 @@ namespace UMU
             }
             catch (Exception error)
             {
-                MessageBox.Show("Произошла ошибка!" + error.ToString());
+                MessageBox.Show("Произошла ошибка!\n" + error.ToString());
             }
 
         }
@@ -210,8 +214,7 @@ namespace UMU
                         model = model_name,
                         value = value_pub,
                         serial = SerialBox.Text,
-                        adres = Properties.Settings.Default.adres,
-                        dram = is_dram
+                        adres = Properties.Settings.Default.adres
                     };
                     JsonContent content = JsonContent.Create(post);
                     var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/upload/add", content);
@@ -240,6 +243,8 @@ namespace UMU
 
         private void Number_GotFocus(object sender, RoutedEventArgs e)
         {
+            NumberBox.Visibility = Visibility.Hidden;
+            Dops_Label.Visibility = Visibility.Hidden;
             Number.Text = "";
             NumberBox.Items.Clear();
             Message.Text = "Ожидаю код";

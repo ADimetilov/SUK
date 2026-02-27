@@ -67,6 +67,9 @@
     </Compile>
     <Compile Include="CreateDocuments.cs" />
     <Compile Include="CreateExcel.cs" />
+    <Compile Include="Requirement_window.xaml.cs">
+      <DependentUpon>Requirement_window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="set_server.xaml.cs">
       <DependentUpon>set_server.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Plus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Requirement_window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

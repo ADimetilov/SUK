@@ -57,9 +57,9 @@ namespace UMU
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception Error)
             {
-                MessageBox.Show("Не получилось соединиться с сервером");
+                MessageBox.Show("Ошибка при получении данных" + Error.ToString());
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -92,6 +92,12 @@ namespace UMU
             set_server server = new set_server();
             server.ShowDialog();
             get_all_cartidge();
+        }
+        
+        private void Open_Requirement(object sender, RoutedEventArgs e)
+        {
+            Requirement_window requirement_window = new Requirement_window();
+            requirement_window.Show();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

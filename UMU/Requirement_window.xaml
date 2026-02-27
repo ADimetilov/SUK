@@ -1,0 +1,45 @@
+﻿<Window x:Class="UMU.Requirement_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UMU"
+        mc:Ignorable="d"
+        Title="Потребность в картриджах" Height="450" Width="445">
+    <Grid HorizontalAlignment ="Stretch" VerticalAlignment="Stretch">
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="117,10,0,0">
+            <Run Text="Потребности в картриджах"></Run>
+        </TextBlock>
+        <ListBox x:Name="Model_list" Width="252" Height="195" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin ="10,40,0,0" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="Model_list_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="200">
+                        <Label Content="{Binding id}" HorizontalAlignment="Left" Width="30" Height="26" VerticalAlignment="Center" Padding="5"/>
+                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Width="160" Height="26" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid x:Name="RequirementGrid" Height="164" HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" CellEditEnding="RequirementGrid_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Модель" IsReadOnly="True" Binding="{Binding Path=name,UpdateSourceTrigger=PropertyChanged}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Потребность" Binding="{Binding Path=score, UpdateSourceTrigger=PropertyChanged}">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="Сохранить" Click="MenuItem_Click_1"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Label Content="Требуется:" HorizontalAlignment="Left" Margin="272,79,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="ScoreBox" HorizontalAlignment="Left" Margin="354,82,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="61" Height="26"/>
+        <Label Content="Модель" HorizontalAlignment="Left" Margin="272,40,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBlock x:Name="ModelBlock" HorizontalAlignment="Left" Margin="354,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="22" Width="61"/>
+        <Button Content="Добавить" HorizontalAlignment="Right" Margin="0,12,5,0"  VerticalAlignment="Stretch" Height="24" Width="159" FontWeight="Bold" Click="set_new_requirement"/>
+
+
+    </Grid>
+</Window>

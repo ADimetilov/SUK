@@ -18,7 +18,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
-                            <Run Text="Клавиша:"></Run>
+                            <Run Text="Цифра:"></Run>
                             <Run Text="{Binding Path=number}"></Run>
                             <Run Text="|"></Run>
                             <Run Text="Модель"></Run>
@@ -27,7 +27,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Label Content="Дополнительные клавиши:" HorizontalAlignment="Center" Margin="0,174,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
+            <Label x:Name="Dops_Label" Content="Дополнительные клавиши:" HorizontalAlignment="Center" Margin="0,174,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
         </Grid>
     </Grid>
 </Window>

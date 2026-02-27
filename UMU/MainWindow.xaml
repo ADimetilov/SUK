@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMU"
         mc:Ignorable="d"
-        Title="Система учета картриджей" MinHeight="629"  Height ="629" Width="904" MinWidth="926" KeyDown="Window_KeyDown" ResizeMode="NoResize">
-    <Grid Height="619" HorizontalAlignment="Center" Width="926" VerticalAlignment="Top">
+        Title="Система учета картриджей" MinHeight="629" Height="629" Width="940" MinWidth="926" KeyDown="Window_KeyDown" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="615">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="1"/>
@@ -31,7 +31,7 @@
             </Border.BorderBrush>
             <Button Content="Приход" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
         </Border>
-        <ListBox x:Name="cart_list" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="21,170,0,0" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="#FFDADADA" HorizontalAlignment="Left" Width="621" Height="405" VerticalAlignment="Top">
+        <ListBox x:Name="cart_list" Margin="21,170,0,0" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="#FFDADADA" HorizontalAlignment="Left" Width="621" Height="405" VerticalAlignment="Top">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="605">
@@ -42,8 +42,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="0,23,0,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Center" Width="422" Background="#FFDADADA">
-            <Label Content="Система Учёта Картриджей (СУК)" HorizontalAlignment="Center" VerticalAlignment="Top" Height="48" Width="386" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Margin="0,16,0,0"/>
+        <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="0,28,0,0" Height="70" VerticalAlignment="Top" HorizontalAlignment="Center" Width="896" Background="#FFDADADA">
+            <Label Content="Система Учёта Картриджей (СУК)" HorizontalAlignment="Center" VerticalAlignment="Top" Height="48" Width="388" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Margin="0,16,0,0"/>
         </Border>
         <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,296,0,0" Height="113" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222">
             <Border.BorderBrush>
@@ -54,17 +54,8 @@
             </Border.BorderBrush>
             <Button Content="Уход (Врачам)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
         </Border>
-        <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="10,61,0,0" HorizontalAlignment="Left" Width="102" Height="37" VerticalAlignment="Top">
-            <Button Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_2"/>
-        </Border>
-        <Border BorderBrush="Black" CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="809,61,0,0" HorizontalAlignment="Left" Width="102" Height="37" VerticalAlignment="Top">
-            <Button Content="Аналитика" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_7"/>
-        </Border>
         <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="549,132,0,0" HorizontalAlignment="Left" Width="93" Height="33" VerticalAlignment="Top" BorderBrush="Black">
             <Button Content="Обновить" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="92" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_3"/>
-        </Border>
-        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="692,61,0,0" HorizontalAlignment="Left" Width="102" Height="37" VerticalAlignment="Top" BorderBrush="Black">
-            <Button Content="Выгрузка" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_4"/>
         </Border>
         <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,478,0,0" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222">
             <Border.BorderBrush>
@@ -75,20 +66,15 @@
             </Border.BorderBrush>
             <Button Content="Уход (В коробку)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_5"/>
         </Border>
-        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="129,61,0,0" HorizontalAlignment="Left" Width="102" Height="37" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" BorderBrush="Black">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Border.RenderTransform>
-            <Button Content="Картриджи" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="102" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_6"/>
-        </Border>
-        <RadioButton x:Name="DramButton" Content="Драм." HorizontalAlignment="Left" Margin="859,446,0,0" VerticalAlignment="Top" Foreground="#FFFFFEFE" IsChecked="False" IsEnabled="False"/>
-        <RadioButton x:Name="CartRadio" Content="Карт." HorizontalAlignment="Left" Margin="794,446,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="True"/>
-
-
+        <Menu Height="25" VerticalAlignment="Top"  HorizontalContentAlignment="Stretch" Background="#FFE4E4E4" FontFamily="Times New Roman" FontSize="16" HorizontalAlignment="Stretch">
+            <MenuItem Header="Модули" Width="69" Height="22"  Background="{x:Null}" BorderBrush="Black">
+                <MenuItem Header="Картриджи" Click="Button_Click_6"></MenuItem>
+                <MenuItem Header="Выгрузка" Click="Button_Click_4"></MenuItem>
+                <MenuItem Header="Аналитика" Click="Button_Click_7"></MenuItem>
+                <MenuItem Header="Потребность" Click="Open_Requirement"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Настройки" Width="88" Height="22" BorderBrush="Black" Margin="1,1,0,0" Click="Button_Click_2">
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

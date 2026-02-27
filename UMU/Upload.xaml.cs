@@ -151,6 +151,7 @@ namespace UMU
             CreateExcel excel = new CreateExcel();
             excel.SetTitle();
             excel.SetContent(cartridges);
+            excel.SetLastContribution();
             excel.SaveTable();
         }
     }

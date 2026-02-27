@@ -52,11 +52,18 @@ namespace UMU
             public int id { get; set; }
             public string name { get; set; }
         }
+        public class Model_class_box
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+        }
         [DataContract]
         public class Model_class
         {
             [DataMember(Name = "id")]
             public int id { get; set; }
+            [DataMember(Name = "model_id")]
+            public int model_id { get; set; }
             [DataMember(Name = "name")]
             public string name { get; set; }
         }
@@ -138,28 +145,31 @@ namespace UMU
 
         private async void Delete_button_Click(object sender, RoutedEventArgs e)
         {
-            if (cart_list.SelectedIndex != -1)
-            {
-                Cartridge_class cartridge = (Cartridge_class)cart_list.SelectedItem;
-                try
+            if (MessageBox.Show("Вы действительно хатите удалить этот картридж? Будут удалены также все связи с этим картриджем.", "Удаление картриджа", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    using (var client = new HttpClient())
+                    if (cart_list.SelectedIndex != -1)
                     {
-                        int id = Convert.ToInt32(cartridge.id);
-                        await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/cart/del?id={id}");
-                        MessageBox.Show("Имя успешно удалено");
-                        get_all_cartidge();
+                        Cartridge_class cartridge = (Cartridge_class)cart_list.SelectedItem;
+                        try
+                        {
+                            using (var client = new HttpClient())
+                            {
+                                int id = Convert.ToInt32(cartridge.id);
+                                await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/cart/del?id={id}");
+                                MessageBox.Show("Картридж успешно удален");
+                                get_all_cartidge();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Не получилось соединиться с сервером");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Выберите модель картриджжа из списка");
                     }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Не получилось соединиться с сервером");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите модель картриджжа из списка");
-            }
             
         }
 
@@ -340,27 +350,30 @@ namespace UMU
 
         private async void delete_model_Click(object sender, RoutedEventArgs e)
         {
-            if (Model_list.SelectedIndex != -1)
+            if (MessageBox.Show("Вы действительно хатите удалить модель? Будут удалены также все связи с этой моделью.","Удаление модели",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Model_class model= (Model_class)Model_list.SelectedItem;
-                try
+                if (Model_list.SelectedIndex != -1)
                 {
-                    using (var client = new HttpClient())
+                    Model_class model = (Model_class)Model_list.SelectedItem;
+                    try
                     {
-                        int id = Convert.ToInt32(model.id);
-                        await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/model/delete?id={id}");
-                        MessageBox.Show("Модель успешно удалена");
-                        get_all_model();
+                        using (var client = new HttpClient())
+                        {
+                            int id = Convert.ToInt32(model.id);
+                            await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/model/delete?id={id}");
+                            MessageBox.Show("Модель успешно удалена");
+                            get_all_model();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Не получилось соединиться с сервером");
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Не получилось соединиться с сервером");
+                    MessageBox.Show("Выберите модель из списка");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Выберите модель из списка");
             }
         }
 
@@ -374,7 +387,7 @@ namespace UMU
 
         private void LinkModelDel_Click(object sender, RoutedEventArgs e)
         {
-            if (Model_list.SelectedIndex != -1)
+            if (LinkListModel.SelectedIndex > -1)
             {
                 LinkListModel.Items.Remove(LinkListModel.SelectedItem);
             }
@@ -384,7 +397,7 @@ namespace UMU
             }
         }
 
-        private async void DeleteAllLink(HttpClient client,int id)
+        private async Task DeleteAllLink(HttpClient client,int id)
         {
             await client.DeleteAsync($"http://{Properties.Settings.Default.ip}:4433/model/unlink?id={id}");
         }
@@ -393,29 +406,40 @@ namespace UMU
         {
             try
             {
-
-                Model_link link = new Model_link();
-                link.id_model = new List<int>();
-                foreach (Model_class item in LinkListModel.Items)
+                if (LinkListModel.Items.Count >= 1)
                 {
-                    link.id_model.Add(item.id);
-                }
-                link.id_cart = ((Cartridge_class)LinkListCart.Items[0]).id;
-                using(var client = new HttpClient())
-                {
-                    JsonContent content = JsonContent.Create(link);
-                    DeleteAllLink(client, link.id_cart);
-                    var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/model/link", content);
-                    if (response.IsSuccessStatusCode)
+                    Model_link link = new Model_link();
+                    link.id_model = new List<int>();
+                    LinkListModel.Items.Refresh();
+                    foreach (Model_class item in LinkListModel.Items)
                     {
-                        var builder = new ToastContentBuilder()
-                       .AddArgument("meetingId", 9813)
-                       .AddText("Уведомление", hintMaxLines: 1)
-                       .AddText("Связано успешно!")
-                       ;
-                        builder.Show();
+                        link.id_model.Add(item.model_id);
                     }
-                    get_all_model();
+                    link.id_cart = ((Cartridge_class)LinkListCart.Items[0]).id;
+                    using (var client = new HttpClient())
+                    {
+                        JsonContent content = JsonContent.Create(link);
+                        await DeleteAllLink(client, link.id_cart);
+                        var response = await client.PostAsync($"http://{Properties.Settings.Default.ip}:4433/model/link", content);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var builder = new ToastContentBuilder()
+                           .AddArgument("meetingId", 9813)
+                           .AddText("Уведомление", hintMaxLines: 1)
+                           .AddText("Связано успешно!")
+                           ;
+                            builder.Show();
+                        }
+                        get_all_model();
+                    }
+                }
+                else
+                {
+                    using (var client = new HttpClient())
+                    {
+                        int id_cart = ((Cartridge_class)LinkListCart.Items[0]).id;
+                        await DeleteAllLink(client, id_cart);
+                    }
                 }
             }
             catch (Exception Error)
