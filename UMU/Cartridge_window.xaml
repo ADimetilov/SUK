@@ -12,9 +12,9 @@
         <ListBox x:Name="cart_list" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="40,0,0,155" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="White" HorizontalAlignment="Left" Width="261" Height="348" VerticalAlignment="Bottom" SelectionChanged="cart_list_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="247">
-                        <Label Content="{Binding id}" HorizontalAlignment="Left" Width="50" Height="26" VerticalAlignment="Center" Padding="5"/>
-                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Width="201" Height="26" VerticalAlignment="Center"/>
+                    <Grid>
+                        <Label Content="{Binding id}" HorizontalAlignment="Left" Height="26" VerticalAlignment="Center" Padding="5"/>
+                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Height="26" VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -27,9 +27,9 @@
         <ListBox x:Name="Model_list" d:ItemsSource="{d:SampleData ItemCount=6}" Margin="748,0,0,155" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="White" HorizontalAlignment="Left" Width="261" Height="348" VerticalAlignment="Bottom" SelectionChanged="Model_list_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="247">
-                        <Label Content="{Binding id}" HorizontalAlignment="Left" Width="50" Height="26" VerticalAlignment="Center" Padding="5"/>
-                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Width="201" Height="26" VerticalAlignment="Center"/>
+                    <Grid>
+                        <Label Content="{Binding id}" HorizontalAlignment="Left" Height="26" VerticalAlignment="Center" Padding="5"/>
+                        <Label Content="{Binding name}" Margin="50,0,0,0" HorizontalAlignment="Left" Height="26" VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

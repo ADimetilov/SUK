@@ -260,6 +260,10 @@ namespace UMU
                 LinkListCart.Items.Add(cart_list.SelectedItem);
                 get_model_for_cart();
             }
+            else if (LinkListCart.Items.Count == 1)
+            {
+                MessageBox.Show("Нельзя добавлять более 1 картриджа в связи!","Ошибка добавления",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
 
         private void LinkCartDel_Click(object sender, RoutedEventArgs e)

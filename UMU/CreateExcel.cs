@@ -1,6 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Security.Cryptography;
@@ -11,6 +9,7 @@ namespace UMU
 {
     public class CreateExcel
     {
+        private string date;
         private Excel.Application app = null;
         private Excel.Workbook workbook = null;
         private Excel.Worksheet worksheet = null;
@@ -56,7 +55,7 @@ namespace UMU
             Excel.Range range1 = worksheet.get_Range("C2", "F2");
             range1.Merge(Type.Missing);
             range1.Style.WrapText = false;
-            worksheet.Cells[2, 3] = "Приложение к Контракту от «01» декабря  2026г. № 798/0817200000325018904";
+            worksheet.Cells[2, 3] = "Приложение к Контракту от «01» декабря  2025г. № 798/0817200000325018904";
             Excel.Range range2 = worksheet.get_Range("A4", "F4");
             range2.Font.Size = 14;
             range2.Merge(Type.Missing);
@@ -102,7 +101,6 @@ namespace UMU
         {
             int last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell).Row;
             last += 1;
-            string date;
             DateTime datenow = DateTime.Now;
             while (datenow.DayOfWeek != DayOfWeek.Tuesday && datenow.DayOfWeek != DayOfWeek.Thursday)
             {
@@ -160,7 +158,7 @@ namespace UMU
         {
             try
             {
-                workbook.SaveAs($"\\\\10.3.6.6\\obmen_jurina\\3. IT-Картриджи\\Заявку на заправку от {DateTime.Now.ToString("yyyy-dd-MM")}");
+                workbook.SaveAs($"\\\\10.3.6.6\\obmen_jurina\\3. IT-Картриджи\\Заявление на заправку от {date}");
             }
             catch (Exception error)
             {

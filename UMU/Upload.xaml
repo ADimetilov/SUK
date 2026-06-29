@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="Выгрузка картриджей" Height="450" Width="800" KeyDown="Window_KeyDown">
     <Grid>
-        <DataGrid x:Name="Table_Uploads" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="800" Height="280" VerticalAlignment="Top" KeyDown="Table_Uploads_KeyDown" PreviewKeyDown="Table_Uploads_PreviewKeyDown">
+        <DataGrid x:Name="Table_Uploads" ColumnWidth="SizeToCells"  AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="800" Height="280" VerticalAlignment="Top" KeyDown="Table_Uploads_KeyDown" PreviewKeyDown="Table_Uploads_PreviewKeyDown">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Width="130" Binding="{Binding Path=Серия}">
+                <DataGridTextColumn Header="№"  Binding="{Binding Path=Серия}">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Дата отправки" Width="150" Binding="{Binding Path=Дата}">
+                <DataGridTextColumn Header="Дата отправки" Width="100" Binding="{Binding Path=Дата}">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Модель" Width="150" Binding="{Binding Path=Модель}">
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=Модель}">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Адрес" Width="362" Binding="{Binding Path=Адрес}">
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Адрес}">
                 </DataGridTextColumn>
             </DataGrid.Columns>
 
@@ -29,11 +29,10 @@
             </DataGrid.RenderTransform>
         </DataGrid>
         <Label Content="Выгружаемые картриджи" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="24"/>
-        <Button Content="Загрузить" HorizontalAlignment="Left" Margin="72,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click" FontWeight="Bold"/>
+        <Button Content="Обновить" HorizontalAlignment="Left" Margin="72,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click" FontWeight="Bold"/>
         <Button Content="Очистить базу" HorizontalAlignment="Left" Margin="619,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_2" FontWeight="Bold"/>
-        <Button HorizontalAlignment="Left" Margin="255,373,0,0" VerticalAlignment="Top" Height="36" Width="108" FontFamily="Times New Roman" FontSize="16" Click="Button_Click_1" FontWeight="Bold" Content="В Word"/>
         <Label Content="Всего:" HorizontalAlignment="Left" Margin="0,326,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
         <Label x:Name="Cost" Content="" HorizontalAlignment="Left" Margin="59,328,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
-        <Button Content="Excel" HorizontalAlignment="Left" Margin="442,373,0,0" VerticalAlignment="Top" Height="36" Width="106" FontSize="16" FontFamily="Times New Roman" FontWeight="Bold" Click="Button_Click_3"/>
+        <Button Content="Excel" HorizontalAlignment="Center" Margin="0,373,0,0" VerticalAlignment="Top" Height="36" Width="106" FontSize="16" FontFamily="Times New Roman" FontWeight="Bold" Click="Button_Click_3"/>
     </Grid>
 </Window>

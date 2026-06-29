@@ -29,7 +29,7 @@
                     <GradientStop Color="White" Offset="0"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Button Content="Приход" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
+            <Button Content="Приход (F1)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" Click="Button_Click" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
         </Border>
         <ListBox x:Name="cart_list" Margin="21,170,0,0" BorderBrush="#FF424646" VerticalContentAlignment="Center" Background="#FFDADADA" HorizontalAlignment="Left" Width="621" Height="405" VerticalAlignment="Top">
             <ListBox.ItemTemplate>
@@ -52,10 +52,10 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Button Content="Уход (Врачам)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
+            <Button Content="Уход (Врачам) (F2)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_1"/>
         </Border>
-        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="549,132,0,0" HorizontalAlignment="Left" Width="93" Height="33" VerticalAlignment="Top" BorderBrush="Black">
-            <Button Content="Обновить" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="92" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_3"/>
+        <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="533,132,0,0" HorizontalAlignment="Left" Width="109" Height="33" VerticalAlignment="Top" BorderBrush="Black">
+            <Button Content="Обновить (R)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="110" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_3"/>
         </Border>
         <Border CornerRadius="6,6,6,6" Padding="2" BorderThickness="2" Margin="689,478,0,0" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="222">
             <Border.BorderBrush>
@@ -64,7 +64,7 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <Button Content="Уход (В коробку)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_5"/>
+            <Button Content="Уход (В коробку) (F3)" HorizontalAlignment="Center" VerticalAlignment="Center" Height="103" Width="216" Background="#FFDADADA" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Click="Button_Click_5"/>
         </Border>
         <Menu Height="25" VerticalAlignment="Top"  HorizontalContentAlignment="Stretch" Background="#FFE4E4E4" FontFamily="Times New Roman" FontSize="16" HorizontalAlignment="Stretch">
             <MenuItem Header="Модули" Width="69" Height="22"  Background="{x:Null}" BorderBrush="Black">

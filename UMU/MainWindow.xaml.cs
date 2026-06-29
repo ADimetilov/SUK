@@ -71,12 +71,21 @@ namespace UMU
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.F1)
             {
-                cancel = true;
+                Button_Click(sender,e);
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.F2)
             {
+                Button_Click_1(sender, e);
+            }
+            if (e.Key == Key.F3)
+            {
+                Button_Click_5(sender,e);
+            }
+            if (e.Key == Key.R)
+            {
+                get_all_cartidge();
             }
         }
 

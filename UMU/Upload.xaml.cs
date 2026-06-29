@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Windows.Graphics.Printing.PrintTicket;
 namespace UMU
 {
     [DataContract]
@@ -42,10 +44,15 @@ namespace UMU
         public Upload()
         {
             InitializeComponent();
-            
+            get_all_upload();
         }
         public List<cartridge_log> cartridges;
         private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await get_all_upload();
+        }
+
+        private async Task get_all_upload()
         {
             try
             {
@@ -68,11 +75,6 @@ namespace UMU
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            CreateDocuments documents = new CreateDocuments();
-            documents.create_doc_state(cartridges);
-        }
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {

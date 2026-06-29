@@ -40,7 +40,6 @@ namespace UMU
                         MessageBox.Show("Соединение установлено");
                         Properties.Settings.Default.ip = ip_box.Text;
                         Properties.Settings.Default.Save();
-                        MessageBox.Show("Успешно сохранено");
                     }
                     else MessageBox.Show("Соединение не установлено");
                 }
